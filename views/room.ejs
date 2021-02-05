@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>UChat</title>
+    <script>
+        const roomName = "<%= roomName %>"
+    </script>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            padding: 0px;
+            margin: 0px;
+            display: flex;
+            background-color: gray;
+        }
+
+        #room-name{
+            color: rgb(0, 243, 252);
+            padding: 0px;
+            margin: 0px;
+            width: 80%;
+            position: fixed;
+            justify-content: left;
+            text-align: center;
+            font-size: 25px;
+        }
+
+        #room-users-container {
+            padding: 5px;
+            margin: 0px;
+            justify-content: right;
+            /* width: 20%; */
+            background-color: black;
+            position: fixed;
+            left: 80%;
+            right: 0px;
+            bottom: 0px;
+            top: 0px;
+            border: solid;
+            border-color: gray;
+            border-width: 5px;
+
+        }
+
+        #room-users-container div {
+            justify-content: left;
+            color: white;
+            border-bottom: solid;
+            border-color: gray;
+            border-width: 2px;
+        }
+
+        #message-container {
+            padding: 5px;
+            margin-left: 5px;
+            margin-top: 30px;
+            height: 90%;
+            justify-content: left;
+            width: 80%;
+            max-width: 2560px;
+            top: 0px;
+            position: fixed;
+            overflow-y: scroll;
+            background-color: rgb(97, 89, 89);
+            color: white;
+        }
+
+
+        #message-container::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        #message-container::-webkit-scrollbar-track {
+            background: white;
+        }
+
+        /* Handle */
+        #message-container::-webkit-scrollbar-thumb {
+            background: rgb(250, 0, 0);
+        }
+
+        /* Handle on hover */
+        #message-container::-webkit-scrollbar-thumb:hover {
+            background: rgb(101, 252, 0);
+        }
+
+        /* #message-container div:nth-child(2n) {
+            background-color: #FFF;
+        } */
+        #send-container {
+            justify-content: left;
+            position: fixed;
+
+            bottom: 0px;
+            max-width: 2560px;
+            width: 75%;
+            border: solid;
+            border-color: black;
+            border-width: 2px;
+            margin-bottom: 15px;
+            margin-left: 2.5%;
+            display: flex;
+        }
+
+        #message-input {
+            flex-grow: 1;
+        }
+
+        #button button{
+            position: fixed;
+            margin: 5px;
+            z-index: 10;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form id="button" action="/goback" method="POST">
+        <button type="submit">Go Back</button>
+    </form>
+
+    <div id="room-name"></div>
+    <div id="message-container"></div>
+    <div id="room-users-container"></div>
+    <form id="send-container">
+        <input type="text" id="message-input">
+        <button type="submit" id="send-button">Send</button>
+    </form>
+</body>
+</html>
